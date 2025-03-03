@@ -4,5 +4,3 @@ multiprocess>=0.70
 boltons>=20.1.0
 openpyxl
 jupyterlab
-MorphoSONIC-1.0.0-py3-none-any.whl
-PySONIC-1.0.0-py3-none-any.whl

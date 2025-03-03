@@ -1,4 +1,4 @@
-FROM python:3.11 as base
+FROM python:3.11 AS base
 #
 #  USAGE:
 #     cd services/pymorphosonic
@@ -24,7 +24,7 @@ RUN apt-get update \
 # + /build             WORKDIR
 #
 
-FROM base as build
+FROM base AS build
 
 ENV SC_BUILD_TARGET build
 
@@ -46,6 +46,7 @@ WORKDIR /build
 RUN mkdir --parents /build/bin
 # copy src code
 COPY --chown=${SC_USER_NAME}:${SC_USER_NAME} src/pymorphosonic src/pymorphosonic
+
 # ------------------------------------------------------------------------------------
 #TODO:
 # uncomment and adapt if build steps are necessary
@@ -61,7 +62,7 @@ COPY --chown=${SC_USER_NAME}:${SC_USER_NAME} src/pymorphosonic src/pymorphosonic
 #    + docker [${SC_USER_NAME}:${SC_USER_NAME}]
 #    + service.cli [${SC_USER_NAME}:${SC_USER_NAME}]
 #
-FROM base as production
+FROM base AS production
 
 ENV SC_BUILD_TARGET production
 ENV SC_BOOT_MODE production
@@ -90,7 +91,16 @@ ENV PATH="/home/${SC_USER_NAME}/service.cli:${PATH}"
 
 # copy binaries from build
 COPY --from=build --chown=${SC_USER_NAME}:${SC_USER_NAME} /build/bin pymorphosonic
+COPY --chown=${SC_USER_NAME}:${SC_USER_NAME} requirements.txt /app/
+COPY --chown=${SC_USER_NAME}:${SC_USER_NAME} PySONIC-1.0.0-py3-none-any.whl /app/
+COPY --chown=${SC_USER_NAME}:${SC_USER_NAME} MorphoSONIC-1.0.0-py3-none-any.whl /app/
+# HOW TO COPY WHL FILE and txt 
 
+
+RUN pip install --upgrade pip wheel setuptools tqdm lockfile multiprocess boltons openpyxl
+RUN pip install -r /app/requirements.txt
+RUN pip install /app/PySONIC-1.0.0-py3-none-any.whl
+RUN pip install /app/MorphoSONIC-1.0.0-py3-none-any.whl
 # ------------------------------------------------------------------------------------
 #TODO:
 # uncomment and provide a healtchecker if possible
