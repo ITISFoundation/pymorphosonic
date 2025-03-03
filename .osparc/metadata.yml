@@ -1,0 +1,30 @@
+name: PyMorphosonic
+key: simcore/services/comp/pymorphosonic
+type: computational
+integration-version: 1.0.0
+version: 0.1.0
+description: Computational service for simulations with Pysonic and Morphosonic
+contact: moyasans@itis.swiss
+thumbnail: https://github.com/ITISFoundation/osparc-assets/blob/cb43207b6be2f4311c93cd963538d5718b41a023/assets/default-thumbnail-cookiecutter-osparc-service.png?raw=true
+authors:
+  - name: Lucia Moya-Sans
+    email: moyasans@itis.swiss
+    affiliation: ITIS Research Foundation
+inputs:
+  input_1:
+    displayOrder: 1
+    label: input_1_label
+    description: The input 1 description
+    type: string
+    fileToKeyMap:
+      somefilename.ext: input_1
+  
+outputs:
+  output_1:
+    displayOrder: 1
+    label: output_1_label
+    description: The output 1 description
+    type: string
+    fileToKeyMap:
+      somefilename.ext: output_1
+  
