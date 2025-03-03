@@ -91,10 +91,6 @@ ENV PATH="/home/${SC_USER_NAME}/service.cli:${PATH}"
 # copy binaries from build
 COPY --from=build --chown=${SC_USER_NAME}:${SC_USER_NAME} /build/bin pymorphosonic
 
-COPY requirements.txt ./
-COPY MorphoSONIC-1.0.0-py3-none-any.whl ./
-COPY PySONIC-1.0.0-py3-none-any.whl ./
-
 # ------------------------------------------------------------------------------------
 #TODO:
 # uncomment and provide a healtchecker if possible

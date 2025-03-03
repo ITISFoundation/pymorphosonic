@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  pymorphosonic:
+    build:
+      context: ./
+      dockerfile: docker/python/Dockerfile
+      labels:
+        io.simcore.name: '{"name":"PyMorphosonic"}'
+        io.simcore.thumbnail: '{"thumbnail":"https://github.com/ITISFoundation/osparc-assets/blob/cb43207b6be2f4311c93cd963538d5718b41a023/assets/default-thumbnail-cookiecutter-osparc-service.png?raw=true"}'
+        io.simcore.description: '{"description":"Computational service for simulations
+          with Pysonic and Morphosonic"}'
+        io.simcore.key: '{"key":"simcore/services/comp/pymorphosonic"}'
+        io.simcore.version: '{"version":"0.1.0"}'
+        io.simcore.integration-version: '{"integration-version":"1.0.0"}'
+        io.simcore.type: '{"type":"computational"}'
+        io.simcore.authors: '{"authors":[{"name":"Lucia Moya-Sans","email":"moyasans@itis.swiss","affiliation":"ITIS
+          Research Foundation"}]}'
+        io.simcore.contact: '{"contact":"moyasans@itis.swiss"}'
+        io.simcore.inputs: '{"inputs":{"input_1":{"displayOrder":1.0,"label":"input_data","description":"Input
+          data","type":"data:*/*","fileToKeyMap":{"input.zip":"input_1"}}}}'
+        io.simcore.outputs: '{"outputs":{"output_1":{"displayOrder":1.0,"label":"output_file","description":"The
+          output 1 description","type":"data:*/*","fileToKeyMap":{"output.zip":"output_1"}}}}'
+        org.label-schema.build-date: 2025-03-03T20:33:42+0000
+        org.label-schema.schema-version: '1.0'
+        org.label-schema.vcs-ref: ''
+        org.label-schema.vcs-url: ''
+        simcore.service.restart-policy: no-restart
+        simcore.service.settings: '[{"name":"Resources","type":"Resources","value":{"Limits":{"NanoCPUs":1000000000,"MemoryBytes":2147483648}}}]'
+      target: production
+    image: simcore/services/comp/pymorphosonic:0.1.0
