@@ -94,7 +94,6 @@ COPY --from=build --chown=${SC_USER_NAME}:${SC_USER_NAME} /build/bin pymorphoson
 COPY requirements.txt ./
 COPY MorphoSONIC-1.0.0-py3-none-any.whl ./
 COPY PySONIC-1.0.0-py3-none-any.whl ./
-RUN pip install --no-cache-dir -r requirements.txt
 
 # ------------------------------------------------------------------------------------
 #TODO:
