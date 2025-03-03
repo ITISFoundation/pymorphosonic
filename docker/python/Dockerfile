@@ -8,7 +8,7 @@ FROM python:3.11 as base
 
 LABEL maintainer=moyasans
 
-# simcore-user uid=8004(${SC_USER_NAME}) gid=8004(${SC_USER_NAME}) groups=8004(${SC_USER_NAME})
+# simcore-user uid=8004(${SC_USER_NAME}) gid=8004(${SC_USER_NAME}) groups=8004(${SC_USER_NAME}) TODO change to scu
 ENV SC_USER_ID 8004
 ENV SC_USER_NAME scu
 RUN adduser --uid ${SC_USER_ID} --disabled-password --gecos "" --shell /bin/sh --home /home/${SC_USER_NAME} ${SC_USER_NAME}

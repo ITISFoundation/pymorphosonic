@@ -13,18 +13,18 @@ authors:
 inputs:
   input_1:
     displayOrder: 1
-    label: input_1_label
-    description: The input 1 description
-    type: string
+    label: input_data
+    description: Input data
+    type: data:*/*
     fileToKeyMap:
-      somefilename.ext: input_1
+      input.zip: input_1
   
 outputs:
   output_1:
     displayOrder: 1
-    label: output_1_label
+    label: output_file
     description: The output 1 description
-    type: string
+    type: data:*/*
     fileToKeyMap:
-      somefilename.ext: output_1
+      output.zip: output_1
   

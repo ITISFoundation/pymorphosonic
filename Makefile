@@ -13,8 +13,6 @@ export DOCKER_REGISTRY   ?= itisfoundation
 export DOCKER_IMAGE_NAME ?= pymorphosonic
 export DOCKER_IMAGE_TAG  ?= $(shell cat VERSION 2> /dev/null || echo undefined)
 
-export COMPOSE_INPUT_DIR  := ./validation/input
-export COMPOSE_OUTPUT_DIR := .tmp/output
 
 OSPARC_DIR:=$(CURDIR)/.osparc
 
@@ -143,8 +141,6 @@ info: ## general info
 	@echo " DOCKER_REGISTRY             : $(DOCKER_REGISTRY)"
 	@echo " DOCKER_IMAGE_NAME           : $(DOCKER_IMAGE_NAME)"
 	@echo " DOCKER_IMAGE_TAG            : $(DOCKER_IMAGE_TAG)"
-	@echo " COMPOSE_INPUT_DIR           : $(COMPOSE_INPUT_DIR)"
-	@echo " COMPOSE_OUTPUT_DIR          : $(COMPOSE_OUTPUT_DIR)"
 	@echo " BUILD_DATE                  : $(BUILD_DATE)"
 	# exe: recommended dev tools
 	@echo ' git                         : $(shell git --version 2>/dev/null || echo not found)'

@@ -5,24 +5,11 @@ set -o nounset
 IFS=$(printf '\n\t')
 INFO="INFO: [$(basename "$0")] "
 
-cd /home/smu/osparc_python_runner
+cd /home/scu/pymorphosonic
 
 echo "$INFO" "starting service as"
 echo "$INFO" "  User    :$(id "$(whoami)")"
 echo "$INFO" "  Workdir : $(pwd)"
-
-echo "$INFO" "activating sim4life venv $SC_VENV"
-source $SC_VENV/bin/activate
-
-which python
-python --version
-
-echo "$INFO" "creating smu venv $SC_PYTHON_VENV_ROOT_DIR"
-virtualenv -p "$SC_VENV"/bin/python "$SC_PYTHON_VENV_ROOT_DIR"
-realpath "$SC_VENV"/lib/python3.11/site-packages >  "$SC_PYTHON_VENV_ROOT_DIR"/lib/python3.11/site-packages/base_venv.pth
-
-echo "$INFO" "activating smu venv $SC_PYTHON_VENV_ROOT_DIR"
-source "$SC_PYTHON_VENV_ROOT_DIR"/bin/activate
 
 # Checking for resources limit env vars injected by osparc
 SIMCORE_NANO_CPUS_LIMIT="${SIMCORE_NANO_CPUS_LIMIT:-0}"
