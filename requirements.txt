@@ -1,6 +1,0 @@
-tqdm>=4.3
-lockfile>=0.1.2
-multiprocess>=0.70
-boltons>=20.1.0
-openpyxl
-jupyterlab
