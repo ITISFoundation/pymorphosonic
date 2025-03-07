@@ -31,6 +31,9 @@ WORKDIR /home/${SC_USER_NAME}
 RUN pip install -e git+https://github.com/tjjlemaire/PySONIC.git@aff881012b83731e7139aa1994f5dff358525700#egg=pysonic
 RUN pip install -e git+https://github.com/tjjlemaire/MorphoSONIC.git@64a0a2325ec8a1cfa90ce5595ea93301e4a1ff91#egg=morphosonic
 
+RUN cd /home/scu/src/morphosonic/MorphoSONIC/nmodl && \
+    nrnivmodl
+
 # copy docker bootup scripts
 COPY --chown=${SC_USER_NAME}:${SC_USER_NAME} docker/python/*.sh docker/
 # copy src code

@@ -19,9 +19,9 @@ services:
           files (including a .py file)","type":"data:*/*"}}}'
         io.simcore.outputs: '{"outputs":{"output_1":{"displayOrder":1.0,"label":"output_1_label","description":"The
           input 1 description","type":"data:*/*"}}}'
-        org.label-schema.build-date: 2025-03-07T15:38:21+0000
+        org.label-schema.build-date: 2025-03-07T15:52:24+0000
         org.label-schema.schema-version: '1.0'
-        org.label-schema.vcs-ref: 416e2c5b2f336cb7731ed920b2ca83f72c13d4a1
+        org.label-schema.vcs-ref: 1ea87b89386e01c63a1463e91983180bd6d1cc55
         org.label-schema.vcs-url: https://github.com/ITISFoundation/pymorphosonic.git
         simcore.service.restart-policy: no-restart
         simcore.service.paths-mapping: '{"inputs_path":"/home/scu/work/inputs","outputs_path":"/home/scu/work/outputs"}'
