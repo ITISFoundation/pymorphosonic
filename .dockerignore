@@ -1,3 +1,23 @@
+## Common.dockerignore
+
+*
+!src/
+!service.cli/
+!docker/
+!.osparc/
+
+# Common
+README.md
+CHANGELOG.md
+docker-compose.yml
+Dockerfile
+
+# git
+.git
+.gitattributes
+.gitignore
+.git*
+
 ## Common.gitignore
 
 # output folders
