@@ -8,16 +8,13 @@ import zipfile
 from pathlib import Path
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("s4l-python-main")
-
+logger = logging.getLogger("pymorphosonic")
 
 ENVIRONS = ["INPUT_FOLDER", "OUTPUT_FOLDER"]
 try:
     input_dir, output_dir = [Path(os.environ.get(v, None)) for v in ENVIRONS]
 except KeyError:
     raise ValueError("Required env vars {ENVIRONS} were not set")
-
-# TODO: sync with schema in metadata!!
 OUTPUT_FILE = "output_data.zip"
 
 
@@ -90,12 +87,7 @@ def ensure_requirements(code_dir: Path) -> Path:
         # deduce requirements using pipreqs
         logger.info("Not found. Recreating requirements ...")
         requirements = code_dir / "requirements.txt"
-        # TODO: MaG This currently does not work for XCore and friends
-        # run_cmd(f"pipreqs --savepath={requirements} --force {code_dir}")
         run_cmd(f"touch {requirements}")
-
-        # TODO log subprocess.run
-
     else:
         requirements = requirements[0]
     return requirements
@@ -110,7 +102,7 @@ def setup():
     # NOTE The inputs defined in ${INPUT_FOLDER}/inputs.json are available as env variables by their key in capital letters
     # For example: input_1 -> $INPUT_1
     #
-
+    
     logger.info("Processing input ...")
     unzip_dir(input_dir)
 
@@ -125,13 +117,15 @@ def setup():
     requirements_txt = ensure_requirements(input_dir)
 
     logger.info("Preparing launch script ...")
-    venv_dir = Path(os.getenv("SC_PYTHON_VENV_ROOT_DIR"))
+    venv_dir = Path.home() / ".venv"
     # TODO: pipreqs tries to download XCore. Can that be avoided?
     script = [
         "#!/bin/sh",
         "set -o errexit",
         "set -o nounset",
         "IFS=$(printf '\\n\\t')",
+        'echo "Creating virtual environment ..."',
+        f'python3 -m venv --system-site-packages --symlinks --upgrade "{venv_dir}"',
         f'echo Installing requirements from "{requirements_txt}"',
         f"echo Currently installed packages:",
         f'"{venv_dir}"/bin/pip list',
