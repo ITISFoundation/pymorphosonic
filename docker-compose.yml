@@ -19,10 +19,10 @@ services:
           files (including a .py file)","type":"data:*/*"}}}'
         io.simcore.outputs: '{"outputs":{"output_1":{"displayOrder":1.0,"label":"output_1_label","description":"The
           input 1 description","type":"data:*/*"}}}'
-        org.label-schema.build-date: 2025-03-07T15:52:24+0000
+        org.label-schema.build-date: 2025-03-10T10:41:52+0000
         org.label-schema.schema-version: '1.0'
-        org.label-schema.vcs-ref: 1ea87b89386e01c63a1463e91983180bd6d1cc55
-        org.label-schema.vcs-url: https://github.com/ITISFoundation/pymorphosonic.git
+        org.label-schema.vcs-ref: b0352e351e8e2023a988c502a7667039cbd13a7f
+        org.label-schema.vcs-url: https://github.com/ITISFoundation/pymorphosonic
         simcore.service.restart-policy: no-restart
         simcore.service.paths-mapping: '{"inputs_path":"/home/scu/work/inputs","outputs_path":"/home/scu/work/outputs"}'
         simcore.service.settings: '[{"name":"constraints","type":"string","value":["node.platform.os

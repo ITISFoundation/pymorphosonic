@@ -3,5 +3,5 @@ services:
   pymorphosonic:
     image: simcore/services/comp/pymorphosonic:0.1.0
     volumes:
-      - ${PWD}/validation/input:/tmp/input
-      - ${PWD}/validation/output:/tmp/output
+      - ${PWD}/validation/input:/input
+      - ${PWD}/validation/output:/output
