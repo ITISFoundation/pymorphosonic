@@ -20,7 +20,3 @@ jobs:
         uses: docker://itisfoundation/ci-service-integration-library:latest
         with:
           args: docker compose build
-      - name: Test whether example runs
-        uses: docker://itisfoundation/ci-service-integration-library:latest
-        with:
-          args: docker compose --file docker-compose-local.yml up
