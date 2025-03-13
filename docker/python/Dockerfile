@@ -1,4 +1,4 @@
-FROM python:3.11 as base
+FROM python:3.9.10 as base
 #
 #  USAGE:
 #     cd services/pymorphosonic
@@ -28,8 +28,8 @@ ENV INPUT_FOLDER="/input" \
 
 WORKDIR /home/${SC_USER_NAME}
 
-RUN pip install -e git+https://github.com/tjjlemaire/PySONIC.git@aff881012b83731e7139aa1994f5dff358525700#egg=pysonic
-RUN pip install -e git+https://github.com/tjjlemaire/MorphoSONIC.git@64a0a2325ec8a1cfa90ce5595ea93301e4a1ff91#egg=morphosonic
+RUN pip install -e git+https://github.com/tjjlemaire/PySONIC.git@6ee5e571edba358dbfa8436c066846fc5d787632#egg=PySONIC
+RUN pip install -e git+https://github.com/tjjlemaire/MorphoSONIC.git@19c86216da7939065bc6e719c03d41024a21c3ca#egg=MorphoSONIC
 
 RUN cd /home/scu/src/morphosonic/MorphoSONIC/nmodl && \
     nrnivmodl

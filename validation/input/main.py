@@ -47,13 +47,13 @@ pp = PulsedProtocol(tpulse, toffset)
 gamma_source = [GammaAcousticSource(gamma_dict, f=500000.0, A=100000.0) for gamma_dict in gamma_dicts]  
 
 data_meta_list = []
-for fiber, source in zip(fibers, gamma_source): # TODO can be setted to a number
+for fiber, source in zip(fibers[:], gamma_source[:]): # TODO can be setted to a number
 # Simulate model with each source-protocol pair, and plot results
     data, meta = fiber.simulate(source, pp)
     #SectionCompTimeSeries([(data, meta)], 'Vm', fiber.nodeIDs).render()
     data_meta_list.append((data, meta))
 
-output_path = "/home/jovyan/work/outputs/output_1"
+output_path = "/home/scu/work/outputs/output_1"
 with open(output_path+'/neuron_sims.pickle','wb') as f:
     pickle.dump(data_meta_list,f)
 
