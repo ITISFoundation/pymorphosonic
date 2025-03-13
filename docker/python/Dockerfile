@@ -23,8 +23,8 @@ FROM base as production
 ENV SC_BUILD_TARGET production
 ENV SC_BOOT_MODE production
 
-ENV INPUT_FOLDER="/tmp/input" \
-    OUTPUT_FOLDER="/tmp/output"
+ENV INPUT_FOLDER="/input" \
+    OUTPUT_FOLDER="/output"
 
 WORKDIR /home/${SC_USER_NAME}
 
