@@ -28,11 +28,12 @@ ENV INPUT_FOLDER="/input" \
 
 WORKDIR /home/${SC_USER_NAME}
 
+RUN apt-get update && apt-get install -y --no-install-recommends git-lfs  && git lfs install  && \
+  apt-get clean && rm -rf /var/lib/apt/lists/* 
 RUN pip install -e git+https://github.com/tjjlemaire/PySONIC.git@6ee5e571edba358dbfa8436c066846fc5d787632#egg=PySONIC
 RUN pip install -e git+https://github.com/tjjlemaire/MorphoSONIC.git@19c86216da7939065bc6e719c03d41024a21c3ca#egg=MorphoSONIC
 
-RUN cd /home/scu/src/morphosonic/MorphoSONIC/nmodl && \
-    nrnivmodl
+RUN cd /home/scu/src/morphosonic/MorphoSONIC/nmodl && nrnivmodl
 
 # copy docker bootup scripts
 COPY --chown=${SC_USER_NAME}:${SC_USER_NAME} docker/python/*.sh docker/
@@ -43,6 +44,8 @@ COPY --chown=${SC_USER_NAME}:${SC_USER_NAME} service.cli/ service.cli/
 # necessary to be able to call run directly without sh in front
 ENV PATH="/home/${SC_USER_NAME}/service.cli:${PATH}"
 RUN pip install -r src/pymorphosonic/requirements.txt
+
+
 
 ENTRYPOINT [ "/bin/sh", "docker/entrypoint.sh", "/bin/sh", "-c" ]
 ## only for computational (also the "/bin/sh", "-c" above)
