@@ -10,7 +10,7 @@ export VCS_STATUS := $(if $(shell git status -s 2> /dev/null || echo unversioned
 export BUILD_DATE := $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 export DOCKER_IMAGE_NAME ?= pymorphosonic
-export DOCKER_IMAGE_TAG ?= 0.1.1
+export DOCKER_IMAGE_TAG ?= 0.1.2
 
 OSPARC_DIR:=$(CURDIR)/.osparc
 
